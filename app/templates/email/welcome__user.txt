@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to PitchMe
+Thank you for signing up to the best pitch platform in the universe. Welcome Home.
