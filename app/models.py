@@ -2,7 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
-
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -44,3 +44,79 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}'
+class Promotion(db.Model):
+    __tablename__ = 'promotion'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post = db.Column(db.String(255))
+    body = db.Column(db.String(1000))
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    comment = db.relationship('CommentsPromotion', backref='promotion', lazy='dynamic')
+
+    def save_promotion(self):
+        db.session.add(self)
+        db.session.commit()
+
+class PromotionComments(db.Model):
+    __tablename__ = 'productcomments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    promotion_id = db.Column(db.Integer, db.ForeignKey("promotion.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_promotioncomments(self):
+        db.session.add(self)
+        db.session.commit()
+
+class PickupLines(db.Model):
+    __tablename__ = 'pickuplines'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post = db.Column(db.String(255))
+    body = db.Column(db.String(1000))
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_pickuplines(self):
+        db.session.add(self)
+        db.session.commit()
+
+class Product(db.Model):
+    __tablename__ = 'productpitch'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post = db.Column(db.String(255))
+    body = db.Column(db.String(1000))
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_productpitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+class ProductComments(db.Model):
+    __tablename__ = 'productcomments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    product_id = db.Column(db.Integer, db.ForeignKey("productpitch.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_productcomments(self):
+        db.session.add(self)
+        db.session.commit()
+    
+class Interview(db.Model):
+    __tablename__ = 'interview'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post = db.Column(db.String(255))
+    body = db.Column(db.String(1000))
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_interview(self):
+        db.session.add(self)
+        db.session.commit()
