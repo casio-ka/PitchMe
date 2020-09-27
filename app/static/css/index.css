@@ -22,3 +22,7 @@
   .jumbotron .container {
     max-width: 40rem;
   }
+ .container .card{
+   position: center;
+
+  }
