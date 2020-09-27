@@ -12,7 +12,7 @@ class PromotionPitch(FlaskForm):
     body = TextAreaField('Post', validators=[Required()])
     submit = SubmitField('Submit')
 
-class PickupLines(FlaskForm):
+class PickupLinesPitch(FlaskForm):
     post = StringField('Title', validators=[Required()])
     body = TextAreaField('Post', validators=[Required()])
     submit = SubmitField('Submit')
@@ -28,5 +28,17 @@ class InterviewPitch(FlaskForm):
     submit = SubmitField('Submit')
 
 class PromotionComment(FlaskForm):
+    comment = StringField('Comment: ', validators=[Required()])
+    submit = SubmitField('Submit')
+
+class ProductComment(FlaskForm):
+    comment = StringField('Comment: ', validators=[Required()])
+    submit = SubmitField('Submit')
+
+class InterviewComment(FlaskForm):
+    comment = StringField('Comment: ', validators=[Required()])
+    submit = SubmitField('Submit')
+
+class PickupComment(FlaskForm):
     comment = StringField('Comment: ', validators=[Required()])
     submit = SubmitField('Submit')
