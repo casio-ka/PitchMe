@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/interview.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <a href="/category/interviewpitch" ><i class="fas fa-plus-square fa-3x"></i></a>
+    <br>
+    <br>
+
+    {%for interview in mypost%}
+    <div class="row">
+        <div class="panel panel-default"><a style="text-decoration: none;" href="/interview/{{interview.id}}"><h4>{{interview.post}}</h4></a>
+            <h5>by {{interview.user.username}}</h5>
+        <small class="text-muted">Created: {{ interview.date_posted.strftime('%Y-%m-%d') }}</small></div>
+    </div>
+    
+    {% if current_user.is_authenticated and current_user.has_liked_post(interview) %}
+
+        <a href="{{ url_for('main.interviewlike_action', interview_id=interview.id, action='unlike') }}"><i class="far fa-caret-square-up"></i></a>
+        {% else %}
+        <a href="{{ url_for('main.interviewlike_action', interview_id=interview.id, action='like') }}"><i class="far fa-caret-square-up"></i></a>
+        {% endif %}
+    {{ interview.interviewlikes.count() }} likes
+    
+
+    {% endfor %}
+</div>
+{% endblock %}
