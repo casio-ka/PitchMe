@@ -4,6 +4,7 @@ from .forms import UpdateProfile,PromotionPitch, PickupLinesPitch, ProductPitch,
 from flask_login import login_required, current_user
 from .. import db,photos
 from ..models import User,Role, Promotion,PickupLines,Product,Interview,PromotionComments,ProductComments,PickupComments,InterviewComments
+import markdown2
 
 
 
