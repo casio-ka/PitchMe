@@ -2,7 +2,7 @@
 A web app where users will submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them
 
 ## Description
-[PitchMe]() is a web application that allows users to submit a pitch, and other users are allowed to vote on submitted pitches and leave comments to give their feedback on the pitches. 
+[PitchMe](https://wpitchme.herokuapp.com/) is a web application that allows users to submit a pitch, and other users are allowed to vote on submitted pitches and leave comments to give their feedback on the pitches. 
 For a user to submit a pitch, vote on a pitch or give feedback on a pitch they need to have an account. <br>
 
 The pitches are organized by categories. Examples of categories: <br> 
@@ -33,11 +33,10 @@ A user can:
 
 ## Setup/Installation Requirements
 
-* Click [PitchMe](https://pitchez.herokuapp.com/) <br/>
+* Click [PitchMe](https://wpitchme.herokuapp.com/) <br/>
 
 
 ## Known Bugs
-
 
 
 ## Technologies Used
