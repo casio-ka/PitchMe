@@ -11,6 +11,7 @@
 
 
 {{ wtf.quick_form(comment_form) }}
+{{simplemde.load}}
 
 {%for comment in comments %}
 <div class="panel"><h5>{{comment.comment}}</h5>
